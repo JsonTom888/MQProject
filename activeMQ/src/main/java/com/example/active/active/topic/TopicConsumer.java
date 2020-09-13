@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class TopicConsumer {
-    @JmsListener(destination = "com.topic")
+    @JmsListener(destination = "com.topic", containerFactory = "topicListenerFactory")
     public void receiveTopic(String text) {
         System.out.println("Consumer topic msg : "+text);
     }

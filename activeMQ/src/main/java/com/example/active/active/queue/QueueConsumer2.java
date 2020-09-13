@@ -12,6 +12,6 @@ import org.springframework.stereotype.Component;
 public class QueueConsumer2 {
     @JmsListener(destination = "neo.queue")
     public void receiveQueue(String text) {
-        System.out.println("Consumer2 queue msg : "+text);
+        System.err.println("Consumer2 queue msg : "+text);
     }
 }
