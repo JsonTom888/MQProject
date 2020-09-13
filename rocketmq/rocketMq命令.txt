@@ -1,0 +1,28 @@
+
+启动namesrv
+nohup bin/mqnamesrv &
+
+启动broker
+在conf/broker.conf 中 加入 brokerIP1=你的公网IP
+
+nohup sh bin/mqbroker -n 139.155.54.93:9876 -c conf/broker.conf autoCreateTopicEnable=true &
+
+以上所有参数必须带上，不然全是坑。
+
+启动mq客户端
+nohup java -jar rocketmq-console-ng-2.0.0.jar --rocketmq.config.namesrvAddr=127.0.0.1:9876 &
+
+停止RocketMQ命令
+./bin/mqshutdown broker
+./bin/mqshutdown namesrv
+
+
+
+
+
+
+
+
+
+
+
