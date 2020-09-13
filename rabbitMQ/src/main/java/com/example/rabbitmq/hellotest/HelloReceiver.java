@@ -1,7 +1,6 @@
 package com.example.rabbitmq.hellotest;
 
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
 /**
@@ -10,7 +9,7 @@ import org.springframework.stereotype.Component;
  * @date 2020/9/13 20:15
  */
 @Component
-@RabbitListener(queues = "tom")
+//@RabbitListener(queues = "tom")
 public class HelloReceiver {
     @RabbitHandler
     public void process(String hello) {

@@ -1,7 +1,6 @@
 package com.example.rabbitmq.manytomany;
 
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
 /**
@@ -10,10 +9,10 @@ import org.springframework.stereotype.Component;
  * @date 2020/9/13 20:45
  */
 @Component
-@RabbitListener(queues = "tom")
+//@RabbitListener(queues = "tom")
 public class ManyConsumer2 {
     @RabbitHandler
     public void process(String tom){
-        System.out.println("Receiver 1: " +tom);
+        System.out.println("Receiver 2: " +tom);
     }
 }
