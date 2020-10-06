@@ -26,3 +26,4 @@ nohup java -jar rocketmq-console-ng-2.0.0.jar --rocketmq.config.namesrvAddr=127.
 
 
 
+
