@@ -29,7 +29,6 @@ public class ConsumerOrder {
                 return ConsumeOrderlyStatus.SUCCESS;
             }
         });
-
         consumer.start();
         System.out.println("Consumer start...");
     }

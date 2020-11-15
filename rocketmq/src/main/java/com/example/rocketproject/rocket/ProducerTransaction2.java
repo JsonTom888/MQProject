@@ -17,14 +17,20 @@ public class ProducerTransaction2 {
         TransactionMQProducer producer = new TransactionMQProducer("my-transation-producer");
         producer.setNamesrvAddr("139.155.54.93:9876");
         producer.setTransactionListener(new TransactionListener() {
+            /**
+             * 本地事务方法
+             * @param message
+             * @param arg
+             * @return
+             */
             @Override
             public LocalTransactionState executeLocalTransaction(Message message, Object arg) {
                 LocalTransactionState state = null;
-                //msg-4返回COMMIT_MESSAGE
+                //msg-1返回COMMIT_MESSAGE
                 if(message.getKeys().equals("msg-1")){
                     state = LocalTransactionState.COMMIT_MESSAGE;
                 }
-                //msg-5返回ROLLBACK_MESSAGE
+                //msg-2返回ROLLBACK_MESSAGE
                 else if(message.getKeys().equals("msg-2")){
                     state = LocalTransactionState.ROLLBACK_MESSAGE;
                 }else{
@@ -35,6 +41,11 @@ public class ProducerTransaction2 {
                 return state;
             }
 
+            /**
+             * 定时回查方法
+             * @param messageExt
+             * @return
+             */
             @Override
             public LocalTransactionState checkLocalTransaction(MessageExt messageExt) {
                 if (null != messageExt.getKeys()) {

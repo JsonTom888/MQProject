@@ -22,6 +22,7 @@ public class ProducerQueueSelector {
         producer.start();
         for (int i = 0; i < 10; i++) {
             Message message = new Message("orderTopic","order2","order-key", ("hello!" + i).getBytes());
+            System.out.println("hello!" + i);
             producer.send(
                     // 要发的那条消息
                     message,
@@ -35,7 +36,8 @@ public class ProducerQueueSelector {
                                 // 具体要发的那条消息
                                 Message msg,
                                 // 对应到 send（） 里的 args，也就是2000前面的那个0
-                                // 实际业务中可以把0换成实际业务系统的主键，比如订单号啥的，然后这里做hash进行选择queue等。能做的事情很多，我这里做演示就用第一个queue，所以不用arg。
+                                // 实际业务中可以把0换成实际业务系统的主键，比如订单号啥的，然后这里做hash进行选择queue等。
+                                // 能做的事情很多，我这里做演示就用第一个queue，所以不用arg。
                                 Object arg) {
                             // 向固定的一个queue里写消息，比如这里就是向第一个queue里写消息
                             MessageQueue queue = mqs.get(0);
